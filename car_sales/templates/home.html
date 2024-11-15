@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero text-white text-center py-4 mb-3" style="background: linear-gradient(135deg, #cdb4db, #bde0fe);">
+    <div class="container">
+        <h1 class="h2 fw-bold mb-2" style="color: #8B0000;">Welcome to Our Car Selling Platform</h1>
+        <p class="mb-3" style="color: #8B0000;">Find the best deals on cars or list your own car to sell easily!</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'add_car' %}" class="btn btn-dark btn-sm shadow-sm px-3">Add Your Car</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary btn-sm shadow-sm px-3">Login</a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Featured Cars Section -->
+<section class="container py-5">
+    <h2 class="text-center mb-5 text-danger display-5 fw-bold">Featured Cars</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for car in cars %}
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0 rounded-lg hover-shadow">
+                    <img class="card-img-top rounded-top" src="{{ car.image.url }}" alt="Car image" style="object-fit: cover; height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ car.name }}</h5>
+                        <p class="card-text text-muted">{{ car.model }}</p>
+                        <p class="card-text text-success fw-bold">${{ car.price }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'buy_car' car.id %}" class="btn btn-outline-primary btn-sm">Buy</a>
+                            {% if car.user == user %}
+                                <div>
+                                    <a href="{% url 'edit_car' car.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{% url 'delete_car' car.id %}" class="btn btn-danger btn-sm ms-2">Delete</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<!-- Call to Action Section -->
+<section class="cta text-center py-3 mt-3" style="background: linear-gradient(135deg, #cdb4db, #bde0fe);">
+    <div class="container">
+        <h2 class="h5 text-danger fw-bold mb-2">Ready to Buy or Sell a Car?</h2>
+        <p class="mb-3">Join our platform today to either find your dream car or list your own vehicle for sale.</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'add_car' %}" class="btn btn-dark btn-sm shadow-sm px-3">Add Your Car</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary btn-sm shadow-sm px-3">Login</a>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

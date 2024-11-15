@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Centered Login Card without Background -->
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row w-100 justify-content-center">
+      <!-- Login Card -->
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-body">
+            <h2 class="text-center text-danger mb-4 fw-bold">Login</h2>
+            <form method="post">
+              {% csrf_token %}
+              
+              <!-- Username Field with Icon -->
+              <div class="mb-3">
+                <label for="username" class="form-label text-muted">Username</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                  {{ form.username }}
+                </div>
+              </div>
+              
+              <!-- Password Field with Icon -->
+              <div class="mb-3">
+                <label for="password" class="form-label text-muted">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                  {{ form.password }}
+                </div>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="d-grid gap-2 mb-3">
+                <button type="submit" class="btn btn-danger btn-lg">Login</button>
+              </div>
+            </form>
+            
+            <p class="text-center">
+              Don't have an account? <a href="{% url 'register' %}" class="text-danger fw-bold">Register here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

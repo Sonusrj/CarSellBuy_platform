@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - Car Selling Platform{% endblock %}
+
+{% load static %}  <!-- Add this line to load the static template tag -->
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero bg-primary text-white text-center py-5 mb-4">
+    <h1 class="display-4 fw-bold">About Us</h1>
+    <p class="lead mb-4 fw-bold">We are passionate about connecting car sellers and buyers seamlessly and efficiently.</p>
+</section>
+
+<!-- Our Mission Section -->
+<section class="container text-center mb-5">
+    <h2 class="display-5 mb-4 text-danger fw-bold">Our Mission</h2>
+    <p class="fs-4 text-muted">
+        Our mission is to provide a hassle-free and trustworthy platform for users to buy and sell their cars. We aim to simplify the process by offering transparency, fairness, and ease of use for all our users.
+    </p>
+</section>
+
+<!-- Meet the Team Section -->
+<section class="container mb-5">
+    <h2 class="text-center display-5 mb-4 text-danger fw-bold">Meet The Team</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Team Member 1 -->
+        <div class="col">
+            <div class="card shadow-sm border-0">
+                <img src="{% static 'images/CEO.png' %}" class="card-img-top rounded-circle mx-auto" alt="Team Member 1">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">John Doe</h5>
+                    <p class="text-muted">Co-Founder & CEO</p>
+                    <p class="card-text">John brings a wealth of experience in the automotive and tech industry. He drives the vision of the company and is dedicated to creating the best platform for car buyers and sellers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="col">
+            <div class="card shadow-sm border-0">
+                <img src="{% static 'images/MD.png' %}" class="card-img-top rounded-circle mx-auto" alt="Team Member 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Jane Smith</h5>
+                    <p class="text-muted">Marketing Director</p>
+                    <p class="card-text">With a background in digital marketing, Jane is responsible for shaping the brand and bringing awareness to the platform. She works tirelessly to make sure we connect with the right audience.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="col">
+            <div class="card shadow-sm border-0">
+                <img src="{% static 'images/CTO.png' %}" class="card-img-top rounded-circle mx-auto" alt="Team Member 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">Mike Johnson</h5>
+                    <p class="text-muted">Chief Technology Officer</p>
+                    <p class="card-text">Mike is the technical mastermind behind the platform. He leads the development team to ensure a seamless and user-friendly experience for all our users.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values Section -->
+<section class="bg-light py-5 mb-4">
+    <div class="container text-center">
+        <h2 class="display-5 text-danger mb-4 fw-bold">Our Core Values</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="fw-bold">Trust</h5>
+                <p class="text-muted">We believe in transparency and honesty, ensuring a trustworthy environment for everyone involved.</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="fw-bold">Innovation</h5>
+                <p class="text-muted">We constantly strive to innovate and improve, bringing new technologies to enhance user experience.</p>
+            </div>
+            <div class="col-md-4">
+                <h5 class="fw-bold">Customer-Centric</h5>
+                <p class="text-muted">Our users are our top priority. We are committed to offering exceptional service and support to meet their needs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="bg-secondary text-white text-center py-5">
+    <h2 class="display-5 mb-4 fw-bold">Get in Touch</h2>
+    <p class="fs-4 mb-4">Have any questions or feedback? We'd love to hear from you!</p>
+    <a href="mailto:support@sellmycar.com" class="btn btn-light btn-lg"><i class="bi bi-envelope me-2"></i>Contact Us</a>
+</section>
+{% endblock %}

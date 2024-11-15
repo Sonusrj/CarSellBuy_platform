@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <!-- User Profile Section -->
+    <div class="card mb-5 p-4 shadow-sm">
+        <div class="text-center">
+            <h2 class="display-4 text-primary">{{ user.username }}'s Profile</h2>
+            <p class="lead text-muted">{{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Cars Added Section -->
+    <div class="mb-5">
+        <div class="card mb-3">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Cars Added</h4>
+            </div>
+            <div class="card-body">
+                {% if added_cars %}
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for car in added_cars %}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.name }}" style="object-fit: cover; height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ car.name }}</h5>
+                                <p class="card-text">{{ car.model }}</p>
+                                <p class="card-text text-muted">${{ car.price }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <!-- Edit and Delete Buttons -->
+                                    <a href="{% url 'edit_car' car.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{% url 'delete_car' car.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning" role="alert">
+                    No cars added yet.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Cars Bought Section -->
+    <div>
+        <div class="card mb-3">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Cars Bought</h4>
+            </div>
+            <div class="card-body">
+                {% if bought_cars %}
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for car in bought_cars %}
+                    <div class="col">
+                        <div class="card h-100 shadow-sm border-0">
+                            <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.name }}" style="object-fit: cover; height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ car.name }}</h5>
+                                <p class="card-text">{{ car.model }}</p>
+                                <p class="card-text text-muted">${{ car.price }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <!-- Edit and Delete Buttons for Bought Cars (if needed) -->
+                                    <a href="{% url 'edit_car' car.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{% url 'delete_car' car.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning" role="alert">
+                    No cars bought yet.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

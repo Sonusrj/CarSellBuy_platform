@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row w-100 justify-content-center">
+      <!-- Edit Car Card -->
+      <div class="col-12 col-md-8 col-lg-6 mx-auto">
+        <div class="card shadow-sm p-4">
+          <div class="card-body">
+            <!-- Card Header with Gradient Background -->
+            <h2 class="text-center text-white mb-4" style="background: linear-gradient(135deg, #28a745, #218838); padding: 15px; border-radius: 8px;">
+              <i class="bi bi-pencil-fill me-2"></i> Edit Car Details
+            </h2>
+
+            <!-- Edit Car Form -->
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="car_name" class="form-label">
+                  <i class="bi bi-car-front me-2"></i>Car Name
+                </label>
+                {{ form.name }} <!-- Car Name Field -->
+              </div>
+
+              <div class="mb-3">
+                <label for="car_model" class="form-label">
+                  <i class="bi bi-house-door me-2"></i>Car Model
+                </label>
+                {{ form.model }} <!-- Car Model Field -->
+              </div>
+
+              <div class="mb-3">
+                <label for="car_price" class="form-label">
+                  <i class="bi bi-cash me-2"></i>Price
+                </label>
+                {{ form.price }} <!-- Price Field -->
+              </div>
+
+              <div class="mb-3">
+                <label for="car_image" class="form-label">
+                  <i class="bi bi-image me-2"></i>Car Image
+                </label>
+                {{ form.image }} <!-- Car Image Field -->
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-lg">
+                  <i class="bi bi-check-circle me-2"></i> Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
